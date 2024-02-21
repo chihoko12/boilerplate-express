@@ -1,7 +1,16 @@
 require('dotenv').config()
 let express = require('express');
+const req = require('express/lib/request');
 let app = express();
 // console.log("Hello World");
+
+app.route('/name').get((req,res) => {
+    res.json({'name' : req.query.first + " " + req.query.last});
+}).post()
+
+app.get('/name', (req,res) => {
+    res.json({'name' : req.query.first + " " + req.query.last});
+})
 
 app.get('/:word/echo', (req,res) => {
     res.json({'echo' : req.params.word});
