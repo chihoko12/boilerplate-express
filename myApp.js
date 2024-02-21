@@ -9,7 +9,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.route('/name').get((req,res) => {
     res.json({'name' : req.query.first + " " + req.query.last});
-}).post()
+}).post((req,res) => {
+    const { first, last } = req.body;
+    res.json({'name' : `${first} ${last}`})
+})
+
 
 app.get('/name', (req,res) => {
     res.json({'name' : req.query.first + " " + req.query.last});
