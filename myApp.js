@@ -7,6 +7,14 @@ let app = express();
 //     res.send('Hello Express');
 // });
 
+app.get('/now', (req,res,next) => {
+    req.time = new Date().toString();
+    next();
+}, (req,res) => {
+    res.json({'time': req.time});
+})
+
+
 app.use('/', (req,res,next)=> {
     console.log(req.method + " " + req.path + " - " + req.ip);
     next();
