@@ -1,8 +1,11 @@
-require('dotenv').config()
+require('dotenv').config();
+const bodyParser = require('body-parser');
 let express = require('express');
 const req = require('express/lib/request');
 let app = express();
 // console.log("Hello World");
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.route('/name').get((req,res) => {
     res.json({'name' : req.query.first + " " + req.query.last});
