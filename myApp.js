@@ -3,9 +3,9 @@ let express = require('express');
 let app = express();
 // console.log("Hello World");
 
-// app.get("/",function(req,res) {
-//     res.send('Hello Express');
-// });
+app.get('/:word/echo', (req,res) => {
+    res.json({'echo' : req.params.word});
+})
 
 app.get('/now', (req,res,next) => {
     req.time = new Date().toString();
@@ -34,5 +34,10 @@ app.get('/json', function(req,res) {
         res.json({"message": "Hello json"});
     }
 })
+
+app.get("/",function(req,res) {
+    res.send('Hello Express');
+});
+
 
 module.exports = app;
